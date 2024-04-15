@@ -8,7 +8,6 @@ base_url = "https://jsonplaceholder.typicode.com/"
 
 
 def do_requests():
-
     e_id = sys.argv[1]
 
     response = requests.get(base_url + "users/" + e_id)
