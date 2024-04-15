@@ -22,7 +22,7 @@ def do_requests():
 
     print(
         f"Employee {user.get('name')} is done with tasks"
-        f"({len(completed)}/{len(u_todo)})"
+        f"({len(completed)}/{len(u_todo)}):"
     )
 
     for task in completed:
