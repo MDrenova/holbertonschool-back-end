@@ -11,8 +11,7 @@ def do_requests():
     e_id = sys.argv[1]
 
     response = requests.get(base_url + "users/" + e_id)
-    request = response.json()
-    user = request['name']
+    user = response.json()
 
     response = requests.get(base_url + "todos/")
     todos = response.json()
