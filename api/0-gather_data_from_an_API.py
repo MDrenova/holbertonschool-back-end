@@ -31,16 +31,13 @@ def do_requests():
 
     todos = response.json()
 
-    user_todo = []
-    for todo in todos:
-        if todo.get("userId") == user.get("id"):
-            user_todo.append(todo)
+    u_todo = [todo for todo in todos if todo.get("userId") == user.get("id")]
 
-    completed = [todo for todo in user_todo if todo.get("completed")]
+    completed = [todo for todo in u_todo if todo.get("completed")]
 
     print(
         f"Employee {user.get('name')} is done with tasks "
-        f"({len(completed)}/{len(user_todo)})"
+        f"({len(completed)}/{len(u_todo)})"
     )
 
     for task in completed:
