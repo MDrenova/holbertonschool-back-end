@@ -9,9 +9,6 @@ base_url = "https://jsonplaceholder.typicode.com/"
 
 def do_requests():
 
-    if len(sys.argv) < 2:
-        print("Correcct usage ", __file__, "<employee_id>")
-
     e_id = sys.argv[1]
 
     response = requests.get(base_url + "users/" + e_id)
