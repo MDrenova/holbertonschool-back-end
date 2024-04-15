@@ -11,20 +11,10 @@ def do_requests():
     e_id = sys.argv[1]
 
     response = requests.get(base_url + "users/" + e_id)
-
-    if response.status_code == 404:
-        return print("Error not found the requested link")
-    if response.status_code != 200:
-        return print("Error with code", response.status_code)
-
-    user = response.json()
+    request = response.json()
+    user = request['name']
 
     response = requests.get(base_url + "todos/")
-    if response.status_code == 404:
-        return print("Error not found the requested link")
-    if response.status_code != 200:
-        return print("Error with code", response.status_code)
-
     todos = response.json()
 
     u_todo = [todo for todo in todos if todo.get("userId") == user.get("id")]
