@@ -14,38 +14,37 @@ def do_requests():
 
     e_id = sys.argv[1]
 
-    if isinstance(e_id, int):
-        response = requests.get(base_url + "users/" + e_id)
+    response = requests.get(base_url + "users/" + e_id)
 
-        if response.status_code == 404:
-            return print("Error not found the requested link")
-        if response.status_code != 200:
-            return print("Error with code", response.status_code)
+    if response.status_code == 404:
+        return print("Error not found the requested link")
+    if response.status_code != 200:
+        return print("Error with code", response.status_code)
 
-        user = response.json()
+    user = response.json()
 
-        response = requests.get(base_url + "todos/")
-        if response.status_code == 404:
-            return print("Error not found the requested link")
-        if response.status_code != 200:
-            return print("Error with code", response.status_code)
+    response = requests.get(base_url + "todos/")
+    if response.status_code == 404:
+        return print("Error not found the requested link")
+    if response.status_code != 200:
+        return print("Error with code", response.status_code)
 
-        todos = response.json()
+    todos = response.json()
 
-        user_todo = []
-        for todo in todos:
-            if todo.get("userId") == user.get("id"):
-                user_todo.append(todo)
+    user_todo = []
+    for todo in todos:
+        if todo.get("userId") == user.get("id"):
+            user_todo.append(todo)
 
-        completed = [todo for todo in user_todo if todo.get("completed")]
+    completed = [todo for todo in user_todo if todo.get("completed")]
 
-        print(
-            f"Employee {user.get('name')} is done with tasks "
-            f"({len(completed)}/{len(user_todo)})"
-        )
+    print(
+        f"Employee {user.get('name')} is done with tasks "
+        f"({len(completed)}/{len(user_todo)})"
+    )
 
-        for task in completed:
-            print(f"\t {task.get('title')}")
+    for task in completed:
+        print(f"\t {task.get('title')}")
 
 
 if __name__ == "__main__":
