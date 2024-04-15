@@ -21,7 +21,7 @@ def do_requests():
     completed = [todo for todo in u_todo if todo.get("completed")]
 
     print(
-        f"Employee {user.get('name')} is done with tasks "
+        f"Employee {user.get('name')} is done with tasks"
         f"({len(completed)}/{len(u_todo)})"
     )
 
