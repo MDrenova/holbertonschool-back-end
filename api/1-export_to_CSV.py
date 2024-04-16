@@ -3,9 +3,10 @@
 extend a python script to export data in the CSV format"""
 
 
+import csv
 import requests
 import sys
-import csv
+
 
 base_url = "https://jsonplaceholder.typicode.com/"
 
