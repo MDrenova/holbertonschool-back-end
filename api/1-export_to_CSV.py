@@ -25,7 +25,7 @@ def do_requests():
     with open(f"{e_id}.csv", 'w') as file:
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)
         for todo in u_todo:
-            writer.writerow([todo["userId"], user["name"],
+            writer.writerow([todo["userId"], user["username"],
                              todo["completed"], todo["title"]])
 
 
