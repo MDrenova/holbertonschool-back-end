@@ -21,22 +21,17 @@ def do_requests():
     u_todo = [todo for todo in todos if todo.get("userId") == user.get("id")]
 
     completed = [todo for todo in u_todo if todo.get("completed")]
+    tasks = []
+    for todo in u_todo:
+        todo_info = {
+            "task": todo["title"],
+            "completed": todo["completed"],
+            "username": user["username"],
+            }
+        tasks.append(todo_info)
 
-    user_tasks = {}
-    for _ in user:
-        u_id = user["id"]
-        user_tasks[u_id] = []
-        for todo in todos:
-            if todo["userId"] == u_id:
-                todo_info = {
-                    "username": user["username"],
-                    "task": todo["title"],
-                    "completed": todo["completed"]
-                }
-                user_tasks[u_id].append(todo_info)
-
-    with open("todo_all_employees.json", 'w') as file:
-        json.dump(user_tasks, file)
+    with open(f"{e_id}.json", 'w') as file:
+        json.dump({e_id: tasks}, file)
 
 
 if __name__ == "__main__":
