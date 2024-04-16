@@ -11,13 +11,13 @@ base_url = "https://jsonplaceholder.typicode.com/"
 def do_requests():
 
     response = requests.get(base_url + "users/")
-    user = response.json()
+    users = response.json()
 
     response = requests.get(base_url + "todos/")
     todos = response.json()
 
     user_tasks = {}
-    for _ in user:
+    for user in users:
         u_id = user["id"]
         user_tasks[u_id] = []
         for todo in todos:
