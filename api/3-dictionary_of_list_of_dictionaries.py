@@ -10,7 +10,7 @@ base_url = "https://jsonplaceholder.typicode.com/"
 
 def do_requests():
 
-    response = requests.get(base_url + "users/" + e_id)
+    response = requests.get(base_url + "users/")
     user = response.json()
 
     response = requests.get(base_url + "todos/")
