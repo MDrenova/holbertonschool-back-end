@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Gather data from an API"""
+"""Using what you did in the task #0
+extend a python script to export data in the CSV format"""
 import json
 import requests
 import sys
@@ -19,7 +20,7 @@ def do_requests():
 
     u_todo = [todo for todo in todos if todo.get("userId") == user.get("id")]
 
-    with open('filve.csv', 'w') as file:
+    with open(f"{e_id}.csv", 'w') as file:
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)
         for todo in u_todo:
             writer.writerow([todo["userId"], user["name"],
