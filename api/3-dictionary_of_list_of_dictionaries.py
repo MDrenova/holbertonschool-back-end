@@ -22,7 +22,6 @@ def do_requests():
         user_list = []
         for todo in todos:
             if todo["userId"] == u_id:
-                
                 todo_info = {
                     "username": user["username"],
                     "task": todo["title"],
